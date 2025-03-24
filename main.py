@@ -1,22 +1,24 @@
-import sys
-import os
+import json
 
-if os.name == "nt":  # Solo en Windows
-    os.system("chcp 65001 > nul")  # Cambia la codificación a UTF-8python main.py
-def menu():
+# Función para mostrar el menú principal
+def menu_principal():
     while True:
-        print("\n📌 Menú Principal")
-        print("1️⃣ Registrarse")
-        print("2️⃣ Iniciar sesión")
-        print("3️⃣ Salir")
+        print("\n--- Gestión de Notas ---")
+        print("1) Ingresar como Profesor")
+        print("2) Ingresar como Alumno")
+        print("3) Salir")
         
         opcion = input("Seleccione una opción: ")
         
-        if opcion == "3":
-            print("👋 Saliendo del programa...")
+        if opcion == "1":
+            print("Funcionalidad de profesor en desarrollo...")
+        elif opcion == "2":
+            print("Funcionalidad de alumno en desarrollo...")
+        elif opcion == "3":
+            print("Saliendo del sistema...")
             break
         else:
-            print("⚠️ Funcionalidad en desarrollo.")
+            print("Opción no válida, intente de nuevo.")
 
 if __name__ == "__main__":
-    menu()
+    menu_principal()
