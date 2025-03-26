@@ -1,0 +1,22 @@
+{
+    "profesor1": {
+        "contrase\u00c3\u00b1a": "clave123",
+        "tipo": "profesor"
+    },
+    "alumno1": {
+        "contrase\u00c3\u00b1a": "12345",
+        "tipo": "alumno"
+    },
+    "Profesor": {
+        "contrase\u00f1a": "1234",
+        "tipo": "profesor"
+    },
+    "Juan": {
+        "contrase\u00f1a": "5678",
+        "tipo": "alumno"
+    },
+    "Maria": {
+        "contrase\u00f1a": "4321",
+        "tipo": "alumno"
+    }
+}
