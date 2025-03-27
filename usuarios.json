@@ -18,5 +18,9 @@
     "Maria": {
         "contrase\u00f1a": "4321",
         "tipo": "alumno"
+    },
+    "Carlos": {
+        "contrase\u00f1a": "1234",
+        "tipo": "profesor"
     }
 }
