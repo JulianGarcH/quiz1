@@ -1,9 +1,8 @@
 import json
 
-# Archivo donde se guardarán las notas
 NOTAS_FILE = "notas.json"
 
-# Función para cargar las notas desde el archivo JSON
+# Función para cargar notas
 def cargar_notas():
     try:
         with open(NOTAS_FILE, "r") as file:
@@ -11,39 +10,34 @@ def cargar_notas():
     except (FileNotFoundError, json.JSONDecodeError):
         return {}
 
-# Función para guardar las notas en el archivo JSON
+# Función para guardar notas
 def guardar_notas(notas):
     with open(NOTAS_FILE, "w") as file:
         json.dump(notas, file, indent=4)
 
-# Función para que el profesor ingrese o edite notas
+# Función para ingresar o editar una nota
 def ingresar_editar_nota():
     notas = cargar_notas()
-
+    
     alumno = input("Ingrese el nombre del alumno: ")
-    materia = input("Ingrese la materia: ")
-    nota = input("Ingrese la nota (0 - 10): ")
-
-    if not (nota.replace(".", "", 1).isdigit() and 0 <= float(nota) <= 10):
-        print("⚠️ Nota inválida. Debe ser un número entre 0 y 10.")
-        return
-
-    if alumno not in notas:
-        notas[alumno] = {}
-
-    notas[alumno][materia] = float(nota)
+    if alumno in notas:
+        print(f"⚠️ {alumno} ya tiene una nota registrada: {notas[alumno]}")
+        opcion = input("¿Desea editarla? (s/n): ").lower()
+        if opcion != "s":
+            print("✅ No se realizaron cambios.")
+            return
+    
+    nueva_nota = input(f"Ingrese la nueva nota para {alumno}: ")
+    notas[alumno] = nueva_nota
     guardar_notas(notas)
+    print(f"✅ Nota guardada para {alumno}: {nueva_nota}")
 
-    print(f"✅ Nota de {materia} para {alumno} registrada correctamente.")
 
-# Función para que el alumno consulte sus notas
-def consultar_notas(usuario):
+# Función para consultar notas
+def consultar_notas(alumno):
     notas = cargar_notas()
-
-    if usuario not in notas:
-        print("⚠️ No hay notas registradas para este alumno.")
-        return
-
-    print(f"\n📖 Notas de {usuario}:")
-    for materia, nota in notas[usuario].items():
-        print(f"📌 {materia}: {nota}")
+    
+    if alumno in notas:
+        print(f"📖 {alumno}, tu nota es: {notas[alumno]}")
+    else:
+        print("⚠️ No tienes una nota registrada.")

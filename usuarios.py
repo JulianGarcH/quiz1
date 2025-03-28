@@ -18,24 +18,26 @@ def guardar_usuarios(usuarios):
 
 # Función para registrar un usuario nuevo
 def registrar_usuario():
+    
     usuarios = cargar_usuarios()
     
     usuario = input("Ingrese un nombre de usuario: ")
     if usuario in usuarios:
         print("⚠️ El usuario ya existe. Intente con otro.")
-        return
-    
+        return  # Salimos de la función inmediatamente
+
     contraseña = input("Ingrese una contraseña: ")
     tipo_usuario = input("Tipo de usuario (profesor/alumno): ").lower()
-    
+
     if tipo_usuario not in ["profesor", "alumno"]:
         print("⚠️ Tipo de usuario inválido. Debe ser 'profesor' o 'alumno'.")
-        return
+        return  # Evita continuar con datos incorrectos
 
     usuarios[usuario] = {"contraseña": contraseña, "tipo": tipo_usuario}
     guardar_usuarios(usuarios)
     
     print("✅ Registro exitoso.")
+
 
 # Función para eliminar un usuario
 def eliminar_usuario():

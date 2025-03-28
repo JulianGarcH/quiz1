@@ -1,6 +1,9 @@
 import json
+from menus import menu_principal
 from usuarios import cargar_usuarios
 from notas import ingresar_editar_nota, consultar_notas
+from usuarios import registrar_usuario, eliminar_usuario
+
 
 # Función para iniciar sesión
 def iniciar_sesion():
@@ -57,19 +60,24 @@ def menu_alumno(usuario):
 def menu_principal():
     while True:
         print("\n--- 🔹 Gestión de Notas 🔹 ---")
-        print("1) Iniciar Sesión")
-        print("2) Salir")
+        print("1) Registrar Usuario")
+        print("2) Eliminar Usuario")
+        print("3) Iniciar Sesión")
+        print("4) Salir")
 
         opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
-            iniciar_sesion()
+            registrar_usuario()  
         elif opcion == "2":
+            eliminar_usuario()  
+        elif opcion == "3":
+            iniciar_sesion()
+        elif opcion == "4":
             print("👋 Saliendo del sistema...")
             break
         else:
             print("⚠️ Opción no válida, intente de nuevo.")
 
-# Ejecutar el menú principal
 if __name__ == "__main__":
     menu_principal()
